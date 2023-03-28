@@ -70,6 +70,7 @@ function appendContent(list){
 
 function buildNavigation(){
     navBarList = document.getElementById("navbar__list")
+    navBarList.addEventListener('click', onNavClick)
     sections = document.querySelectorAll('section')
     appendContent(sections)
    
@@ -120,9 +121,7 @@ document.addEventListener('scroll', function () {
   })
 
 
-  if(navBarList){
-    navBarList.addEventListener('click', onNavClick)  
-  }
+ 
 
   
 
