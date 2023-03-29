@@ -12,4 +12,18 @@ Features
 </ul>
 
 <h2> Instructions </h2>
-To get starte clone the repo and start playing around with HTML CSS and JS files
+To get started clone the repo and start playing around with HTML CSS and JS files
+
+
+Guide to use this app
+<ul>
+<li> Clone the repo </li>
+<li> open the idex.html file in browser to see the result </li>
+<li> edit the index.html and src/app.js to modify the app </li>
+</ul>
+
+Dependencies
+ Editor, node latest version installed
+ 
+ Author
+ Parth Bhatnagar
