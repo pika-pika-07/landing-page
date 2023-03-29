@@ -46,16 +46,27 @@ let sectionsList = undefined
 */
 
 
+/*This function appends the li tag to navbar */
 
 function appendContent(list){
     let content = ''
+    const fragment = document.createDocumentFragment();
 
     for(section of list){
         // console.log(section.id)
-        content += `<li><a class="menu__link" data-href=${section.id}>${section.dataset.nav}</a></li>`
+        const anchor = document.createElement('a')
+        anchor.setAttribute('data-href',section.id)
+        anchor.innerText = section.dataset.nav
+        anchor.classList.add('menu__link')
+        const listTag = document.createElement('li')
+        listTag.appendChild(anchor)
+        console.log(listTag)
+       
+        fragment.appendChild(listTag)
+   
     }
-
-    navBarList.innerHTML = content
+    // console.log(fragment)
+    navBarList.appendChild(fragment)
 }
 
 
@@ -68,6 +79,7 @@ function appendContent(list){
 
 // build the nav
 
+/* This funtion builds the navigation*/
 function buildNavigation(){
     navBarList = document.getElementById("navbar__list")
     navBarList.addEventListener('click', onNavClick)
@@ -75,30 +87,32 @@ function buildNavigation(){
     appendContent(sections)
    
 }
+
+/* This function sets the active state for navs*/
 function manageActiveSectionState(){
    
     // Add class 'active' to section when it is near top of viewport
     for (section of sections) {
-        
-        const box = section.getBoundingClientRect();
-        const nav = document.querySelector(`a[data-href="${section.id}"]`)
-        console.log(nav.classList)
-        
-        if (box.top <= 150 && box.bottom >= 150) {
-            //console.log(obj)
-            section.classList.add('active')
-            nav.classList.add('active1')
-            // Apply active state on the current section and the corresponding Nav link.
-            } else {
-            //console.log(obj)
-            section.classList.remove('active')
-            nav.classList.remove('active1')
-            // Remove active state from other section and corresponding Nav link.
-            }
-           
+      const box = section.getBoundingClientRect();
+      const nav = document.querySelector(`a[data-href="${section.id}"]`);
+      console.log(nav.classList);
+
+      if (box.top <= 150 && box.bottom >= 150) {
+        //console.log(obj)
+        section.classList.add("active");
+        nav.classList.add("active1");
+        // Apply active state on the current section and the corresponding Nav link.
+      } else {
+        //console.log(obj)
+        section.classList.remove("active");
+        nav.classList.remove("active1");
+        // Remove active state from other section and corresponding Nav link.
+      }
     }
 }
 
+
+/* This function is called on click of nav item*/
 
  function onNavClick(event) {
      event.preventDefault()
